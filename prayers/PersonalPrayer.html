@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Prayer for Spiritual Power</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
@@ -86,6 +87,42 @@
             right: 0;
             height: 4px;
             background: var(--primary-gradient);
+        }
+
+        .home-nav {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            z-index: 100;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            background: var(--primary-gradient);
+            color: white;
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .home-btn i {
+            font-size: 1rem;
         }
 
         .main-scripture {
@@ -387,6 +424,16 @@
                 padding: 1.5rem;
             }
 
+            .home-nav {
+                left: 15px;
+                top: 15px;
+            }
+
+            .home-btn {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+
             .section-number {
                 display: none;
             }
@@ -485,6 +532,12 @@
 <body>
     <div class="container">
         <header class="header">
+            <div class="home-nav">
+                <a href="../index.html" class="home-btn">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </div>
             <div class="main-scripture">
                 "Sanctify yourselves, for tomorrow the Lord will perform wonders among you." (Joshua 3:5)
             </div>
