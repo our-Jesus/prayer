@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Prayer for Spiritual Power</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gold-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-light: #718096;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+        }
+
+        .main-scripture {
+            background: linear-gradient(135deg, rgba(255, 245, 238, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--text-primary);
+            border-left: 4px solid #ff6b47;
+            box-shadow: 0 8px 20px rgba(255, 107, 71, 0.15);
+            position: relative;
+        }
+
+        .main-scripture::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #ff6b47;
+            opacity: 0.3;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .quote {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: var(--border-radius);
+            border-left: 3px solid rgba(102, 126, 234, 0.5);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1.5rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .prayer-section {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prayer-section:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .prayer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .prayer-section:hover::before {
+            opacity: 1;
+        }
+
+        .section-number {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            z-index: 10;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .scripture-quote {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scripture-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gradient);
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .bible-ref {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .prayer-instruction {
+            background: linear-gradient(135deg, rgba(255, 215, 155, 0.2) 0%, rgba(25, 84, 123, 0.1) 100%);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            border-left: 3px solid #ffd89b;
+            font-size: 0.9rem;
+        }
+
+        .prayer-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin: 1.5rem 0;
+        }
+
+        .action-word {
+            font-weight: 600;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prayer-subject {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .emphasis {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .prayer-part {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius);
+            border-left: 4px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .prayer-part:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(5px);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        li {
+            margin: 1rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: var(--border-radius);
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        li:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-left-color: #667eea;
+            transform: translateX(8px);
+        }
+
+        li::before {
+            content: '✨';
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        li .emphasis {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+
+        /* Floating animation for spiritual elements */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .prayer-section:nth-child(even) {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .prayer-section:nth-child(odd) {
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .header,
+            .prayer-section,
+            .footer {
+                padding: 1.5rem;
+            }
+
+            .section-number {
+                display: none;
+            }
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-gradient);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-gradient);
+        }
+
+        /* Subtle entrance animations */
+        .prayer-section {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prayer-section:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .prayer-section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .prayer-section:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .prayer-section:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .prayer-section:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .prayer-section:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .prayer-section:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .prayer-section:nth-child(8) {
+            animation-delay: 0.4s;
+        }
+
+        .prayer-section:nth-child(9) {
+            animation-delay: 0.45s;
+        }
+
+        .prayer-section:nth-child(10) {
+            animation-delay: 0.5s;
+        }
+
+        .prayer-section:nth-child(11) {
+            animation-delay: 0.55s;
+        }
+
+        .prayer-section:nth-child(12) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="main-scripture">
+                "Sanctify yourselves, for tomorrow the Lord will perform wonders among you." (Joshua 3:5)
+            </div>
+            <p class="quote">"Dear Children! Also today I call you to prayer. Renew your personal prayer, and in a
+                special way pray to the Holy Spirit to help you pray with the heart." (Medjugorje, May 25th, 2006)</p>
+            <h1>Personal Prayer for Spiritual Power</h1>
+        </header>
+
+        <main>
+            <section class="prayer-section">
+                <div class="section-number">1</div>
+                <h2>Praise be to the Triune God, who fills heaven and earth</h2>
+                <div class="scripture-quote">
+                    "Our Father in heaven, hallowed be your name"
+                    <span class="bible-ref">(Matthew 6:9)</span>
+                </div>
+                <div class="prayer-text">
+                    <span class="action-word">Oh, God</span>, the Creator, <span class="prayer-text">I praise and
+                        glorify you.</span><br>
+                    <span class="action-word">Oh, Holy Trinity</span>, the abode of love, <span class="prayer-text">I
+                        praise you.</span><br>
+                    <span class="prayer-text">Hallelujah, Hallelujah...</span>
+                </div>
+                <div class="prayer-instruction">Praise spontaneously</div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">2</div>
+                <h2>Praise the indwelling Holy Trinity</h2>
+                <div class="prayer-instruction">Place both hands on your chest, close your eyes, and pray fervently
+                </div>
+                <div class="prayer-text">
+                    <span class="prayer-text">I praise you</span> <span class="prayer-subject">Loving Father</span>,
+                    dwelling in me<br>
+                    <span class="prayer-text">I praise you</span> <span class="prayer-subject">Lord Jesus</span>, living
+                    in me<br>
+                    <span class="prayer-text">I praise you</span> <span class="prayer-subject">Holy Spirit</span>, my
+                    helper, who lives in me.<br>
+                    <span class="prayer-text">Hallelujah, Hallelujah...</span>
+                </div>
+                <div class="prayer-instruction">Praise spontaneously</div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">3</div>
+                <h2>Worship the Holy Trinity dwelling in our hearts</h2>
+                <div class="prayer-instruction">Place both hands on your chest, close your eyes, and pray fervently
+                </div>
+                <div class="prayer-text">
+                    I worship you, Father, dwelling in me,<br>
+                    I worship you, Jesus, dwelling in me,<br>
+                    I worship you, Holy Spirit, my helper, dwelling in me.<br>
+                    Hallelujah, Hallelujah...
+                </div>
+                <div class="prayer-instruction">Praise spontaneously</div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">4</div>
+                <h2>Total surrender to God</h2>
+                <div class="scripture-quote">
+                    "Your Kingdom come..."
+                    <span class="bible-ref">(Matthew 6:10)</span>
+                </div>
+                <p><span class="action-word">Surrender</span> your spirit, soul, and body to the Holy Trinity dwelling
+                    in you.</p>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Spirit:</span> <span class="prayer-text">I surrender my spirit.</span> I
+                        submit all the wounds and impurities that are barriers to the intervention of the Holy Spirit
+                        into my spirit.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Conscience:</span> <span class="action-word">Oh,</span> indwelling <span
+                            class="prayer-subject">Holy Spirit</span>, <span class="prayer-text">I surrender my
+                            conscience</span> with all its wrong convictions.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Mind:</span> To the Holy Trinity, I surrender all the inner areas of my
+                        mind. Holy Spirit, living in me, I surrender my unconscious mind, subconscious mind, and
+                        conscious mind. I submit all the wounds imbibed when I was in my mother's womb, wounds due to
+                        the lack of parental love. I surrender all other wounds caused by dejection, grief, anxiety,
+                        worry, inferiority complex, hatred, contempt, pride, anger, jealousy, lust, greed, weakness, and
+                        other bad habits.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Senses:</span> Surrender your sense organs to the indwelling Holy Trinity.
+                    </p>
+                    <ul>
+                        <li><span class="emphasis">Eyes:</span> I submit all the impurities that I have seen through my
+                            eyes. (The films, frightening scenes, pornographic films, and impure literature I have read,
+                            etc.)</li>
+                        <li><span class="emphasis">Ears:</span> I submit all the impure conversations, songs, stories,
+                            careless talks, and hurting words I have heard.</li>
+                        <li><span class="emphasis">Tongue:</span> I submit all the hurting words which have come from my
+                            mouth and all impure conversations I have made, etc.</li>
+                        <li><span class="emphasis">Nose:</span> I surrender all the impure senses of smell that got into
+                            me. The smell of cigarettes, alcohol, and perfumes which I crave or use to intoxicate me and
+                            the moments when I have enjoyed them.</li>
+                        <li><span class="emphasis">Skin:</span> I submit all the blemishes that have come through my
+                            senses of touch. I submit the moments when I have touched others or others have touched me
+                            with lust or impure thoughts. Also, the moments if I have made my own body impure by impure
+                            deeds.</li>
+                    </ul>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Thoughts and imaginations:</span> To the Holy Trinity dwelling in me, I
+                        surrender all the zones of impure thoughts and imaginations.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Body:</span> Holy Spirit abiding in me, I surrender my physical body, each
+                        of my organs, muscles, blood vessels, germs, blood, each and every cell of my body, the sinful
+                        desires of the flesh, and its weaknesses.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Sexuality:</span> Oh, Holy Spirit in me, I submit my sexuality, with all
+                        its impurities and weaknesses.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Sickness:</span> Oh, God, I surrender all my sickness of body and mind.
+                    </p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Sufferings:</span> Oh, Holy Trinity dwelling in me, I surrender all my
+                        just and unjust sufferings.</p>
+                    <div class="scripture-quote">"Yet it was our infirmities that he bore, our sufferings that he
+                        endured, while we thought of him as stricken, as one smitten by God and afflicted" <span
+                            class="bible-ref">(Isaiah 53:4)</span></div>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Other areas:</span> Oh, God, I submit all other areas concerning me.
+                        Financial problems, difficulties in my career, anxieties of the future, all my personal
+                        relationships, parents, brothers and sisters, life partner, married life and its associated
+                        problems, children and worries about them, co-workers, etc.</p>
+                </div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">5</div>
+                <h2>Sanctification</h2>
+                <div class="scripture-quote">
+                    "Your will be done, on earth as in heaven." (Matthew 6:10)<br>
+                    "This is the will of God, your holiness: that you refrain from immorality."
+                    <span class="bible-ref">(1 Thessalonians 4:3)</span>
+                </div>
+                <p>Pray to the Holy Spirit, dwelling in you, to reveal all the wounds and impurities in the submitted
+                    zones.</p>
+                <p>Oh, Holy Spirit abiding in me, reveal all the blemishes of my inner areas, i.e., spirit, soul,
+                    conscience, unconscious mind, subconscious mind, conscious mind, and inner senses. According to the
+                    revelation of incidents (impurities, hurts, and wounds), pray to Jesus to cleanse you with His
+                    Precious Blood.</p>
+                <div class="prayer-instruction">Pray in your heart</div>
+                <p>Oh, Jesus! dwelling in my heart, cleanse me by your holy blood... cleanse this particular sin... and
+                    purify me. Kindly wash the stains of my sins and debts in the ocean of thy grace and purify me.
+                    Sanctify me.</p>
+                <div class="prayer-instruction">Pray in this manner for some time and you will experience the cleansing
+                    process</div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">6</div>
+                <h2>Empowerment/Grace</h2>
+                <div class="scripture-quote">"Give us today our daily bread" <span class="bible-ref">(Matthew
+                        6:11)</span></div>
+                <p>I pray to you, God, to fill me with the fruit, gifts, and charisms of the Spirit.</p>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">Fruit of the Spirit (Galatians 5:22):</span> Fill me with the fruit of the
+                        Holy Spirit: love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, humility,
+                        and self-control.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">The gifts of the Holy Spirit: (Isaiah 11:2-3)</span> Wisdom, intelligence,
+                        knowledge, understanding, counsel, fortitude, godliness, fear of the Lord, devotion, and
+                        reverence to God.</p>
+                </div>
+
+                <div class="prayer-part">
+                    <p><span class="emphasis">The charisms of the Holy Spirit: (1 Corinthians 12:7-10)</span> Fill me
+                        with your charisms. Word of wisdom, word of knowledge, gift of discerning spirits, gift of
+                        tongues, gift of interpreting tongues, gift of prophecy, gift of faith, gift of healing, gift of
+                        performing miracles, gift of ministry, gift of preaching the Gospel, and gift of intercession.
+                    </p>
+                    <p>Your grace is sufficient for me. Fill me with your grace.</p>
+                    <div class="prayer-instruction">Pray repeatedly</div>
+                </div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">7</div>
+                <h2>Forgive and Love (John 13:34)</h2>
+                <div class="scripture-quote">"...And forgive us our debts, as we forgive our debtors." <span
+                        class="bible-ref">(Matthew 6:12)</span></div>
+                <p>Submit your unconscious mind and subconscious mind to the Holy Spirit dwelling in you and pray to
+                    reveal the persons whom you hate and those who hate you.</p>
+                <p><span class="emphasis">Prayer:</span> Indwelling Holy Spirit, I humbly beg you to reveal all the
+                    persons who hate me and others whom I hate, and all the incidents which led to it. According to the
+                    revelation of the incidents and persons, visualize them in your mind and forgive them in the name of
+                    Jesus Christ. Free them from the bondage of hatred. Accept forgiveness from them and love them.</p>
+                <p>Brother/Sister, in the name of Jesus, forgive me. Free me of all bondages, in the name of the Savior,
+                    I forgive, I free you from all bondages. In the name of Jesus, I love you. Holy Spirit abiding in my
+                    heart, Spirit of unity, unite us.</p>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">8</div>
+                <h2>Repentance of sin</h2>
+                <p>Oh, Holy Trinity living in me, kindly reveal all my sins. Give me the realization and repentance of
+                    sin.</p>
+                <p>Have mercy on me, a sinner. Kindly give me complete remission of sins.</p>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">9</div>
+                <h2>Listen to the Word of God</h2>
+                <p>Loving Father, speak to me through the Word of God. (John 8:31; Matthew 12:24)</p>
+                <div class="prayer-instruction">Prayerfully open the Bible and read a part from the New Testament</div>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">10</div>
+                <h2>Communicate to the Holy Trinity living in you</h2>
+                <div class="scripture-quote">"But when he comes, the Spirit of Truth, he will guide you to all truth. He
+                    will not speak on his own, but he will speak what he hears, and will declare to you the things that
+                    are coming" <span class="bible-ref">(John 16:13)</span></div>
+                <div class="prayer-instruction">Place both hands on your chest, close your eyes, with full
+                    concentration, speak to the God dwelling in you</div>
+                <p><span class="emphasis">Prayer:</span> Oh, God abiding in me, speak to me. Thy humble servant listens.
+                </p>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">11</div>
+                <h2>Intercessory Prayer</h2>
+                <div class="scripture-quote">"And do not subject us to the final test, but deliver us from the evil
+                    one." <span class="bible-ref">(Matthew 6:13)</span></div>
+                <p>Pray for others according to the inspirations of the Spirit, for the Church, for priests, parish,
+                    Gospel preachers, workers of God's ministry, for the sick, for relatives, friends, and those who
+                    have requested your prayers.</p>
+            </section>
+
+            <section class="prayer-section">
+                <div class="section-number">12</div>
+                <h2>Thanksgiving</h2>
+                <div class="scripture-quote">"In all circumstances give thanks for this is the will of God for you in
+                    Christ Jesus." <span class="bible-ref">(1 Thessalonians 5:17)</span></div>
+                <p>Give thanks to the Lord for all the blessings you have received. Accept our daily cross from the
+                    hands of the Lord and give thanks for it.</p>
+                <div class="scripture-quote">"Without Good Friday there is no Easter."</div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>"Personal Prayer, which is as it were the very breath of the Christian, should never be neglected. There
+                is also a need to help the faithful to rediscover the link between this personal prayer and liturgical
+                prayer." (Ecclesia in Europa 78)</p>
+        </footer>
+    </div>
+</body>
+
+</html>

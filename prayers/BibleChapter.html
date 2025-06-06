@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Scripture Companion - Catholic Bible</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #534bae;
+            --primary-dark: #000051;
+            --accent: #ffd700;
+            --accent-dark: #ffb300;
+            --accent-light: #fff350;
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-primary: #2c3e50;
+            --text-secondary: #5d6d7e;
+            --prayer-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(243, 246, 255, 0.95) 100%);
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 35px 70px rgba(0, 0, 0, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating particles background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255, 215, 0, 0.3), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.25), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 20s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg,
+                    var(--primary) 0%,
+                    var(--accent) 25%,
+                    var(--primary-light) 50%,
+                    var(--accent) 75%,
+                    var(--primary) 100%);
+            background-size: 400% 100%;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 40px 40px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: halo 4s ease-in-out infinite;
+        }
+
+        @keyframes halo {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 35px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .sacred-symbol {
+            font-size: 4rem;
+            color: var(--accent);
+            margin: 25px 0;
+            animation: breathe 4s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.3));
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(2deg);
+                opacity: 1;
+            }
+        }
+
+        .content {
+            padding: 0 40px 50px;
+        }
+
+        .prayer-section {
+            background: var(--prayer-bg);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .prayer-section::before {
+            content: "✠";
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            animation: cross-glow 6s ease-in-out infinite;
+        }
+
+        @keyframes cross-glow {
+
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(1.05);
+            }
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.2);
+            border-color: var(--primary);
+        }
+
+        .lang-btn:hover::before {
+            left: 100%;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .prayer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .prayer-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .prayer-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        .prayer-text p {
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .prayer-text p:hover {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+
+        .prayer-verse {
+            font-style: italic;
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(26, 35, 126, 0.2);
+            padding-top: 20px;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .prayer-verse::before {
+            content: "❝";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--prayer-bg);
+            padding: 0 10px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .selection-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 255, 0.95) 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 45px;
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .selection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .selection-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+
+        .testament-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .option-card {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+        }
+
+        .option-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .option-label {
+            display: block;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(243, 246, 255, 0.9) 100%);
+            border: 2px solid rgba(26, 35, 126, 0.1);
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .option-label::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option-label>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .option-card:hover .option-label {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(26, 35, 126, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .option-card input[type="radio"]:checked+.option-label {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(26, 35, 126, 0.3);
+        }
+
+        .option-card input[type="radio"]:checked+.option-label::before {
+            opacity: 1;
+        }
+
+        .option-card input[type="radio"]:checked+.option-label .option-icon,
+        .option-card input[type="radio"]:checked+.option-label .option-title,
+        .option-card input[type="radio"]:checked+.option-label .option-desc,
+        .option-card input[type="radio"]:checked+.option-label .option-stats {
+            color: white;
+        }
+
+        .option-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            display: block;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .option-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .option-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            margin-bottom: 8px;
+        }
+
+        .option-stats {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            transition: all 0.3s ease;
+        }
+
+        .selection-info {
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, rgba(255, 248, 225, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .info-card h3 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .included-books {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .generate-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .generate-btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(26, 35, 126, 0.5);
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+
+        .generate-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .generate-btn i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .result-section {
+            display: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 225, 0.95) 100%);
+            border-radius: 25px;
+            padding: 45px;
+            margin-bottom: 45px;
+            border: 2px solid var(--accent);
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            animation: resultAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        @keyframes resultAppear {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .result-section::before {
+            content: "★";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .result-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.3;
+        }
+
+        .result-link {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .read-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--primary-dark);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .read-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(243, 246, 255, 0.9) 100%);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 45px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            text-align: justify;
+            font-size: 1.05rem;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-style: italic;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        }
+
+        .footer-symbol {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            animation: footerGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes footerGlow {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 25px;
+            }
+
+            .content {
+                padding: 0 25px 35px;
+            }
+
+            .header {
+                padding: 50px 25px 30px;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .testament-options {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .option-label {
+                padding: 20px 15px;
+            }
+
+            .option-icon {
+                font-size: 2rem;
+            }
+
+            .option-title {
+                font-size: 1rem;
+            }
+
+            .option-desc {
+                font-size: 0.85rem;
+            }
+
+            .option-stats {
+                font-size: 0.75rem;
+            }
+
+            .prayer-section,
+            .selection-section,
+            .result-section,
+            .about-section {
+                padding: 30px 25px;
+            }
+
+            .generate-btn {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+
+            .language-toggle {
+                gap: 10px;
+            }
+
+            .lang-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .testament-options {
+                grid-template-columns: 1fr;
+            }
+
+            .generate-btn {
+                padding: 16px 35px;
+                font-size: 1rem;
+            }
+
+            .option-label {
+                padding: 18px 15px;
+            }
+
+            .result-title {
+                font-size: 1.8rem;
+            }
+
+            .info-card {
+                padding: 20px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced focus states for accessibility */
+        .lang-btn:focus,
+        .generate-btn:focus,
+        .read-btn:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Sacred Scripture Companion</h1>
+            <p class="subtitle">Discover God's Word Through Divine Providence</p>
+            <div class="sacred-symbol">✠</div>
+        </div>
+
+        <div class="content">
+            <div class="prayer-section">
+                <div class="language-toggle">
+                    <button id="englishBtn" class="lang-btn active" onclick="showLanguage('english')">English</button>
+                    <button id="malayalamBtn" class="lang-btn" onclick="showLanguage('malayalam')">മലയാളം</button>
+                </div>
+
+                <div id="english-prayer">
+                    <h2 class="prayer-title">Prayer for Divine Scripture Guidance</h2>
+                    <div class="prayer-text">
+                        <p><strong>✠ In the name of the Father, and of the Son, and of the Holy Spirit. Amen.</strong>
+                        </p>
+
+                        <p><strong>Come, O Holy Spirit, Divine Guide and Light of Truth. You who inspired the sacred
+                                authors to write Your Word, guide me now to the exact passage of Scripture that my soul
+                                needs at this moment.</strong></p>
+
+                        <p><strong>Spirit of Wisdom, direct this selection according to Your perfect will. Lead me not
+                                by chance, but by Your divine providence to the verse, chapter, or book that speaks to
+                                my heart's deepest need. You know what I require for my spiritual growth before I myself
+                                understand it.</strong></p>
+
+                        <p><strong>O God, as You once guided the apostles to choose Matthias by casting lots, trusting
+                                in Your sovereign will, so too do I trust that You will guide this sacred selection. May
+                                the Scripture You reveal be a lamp unto my feet and a light unto my path.</strong></p>
+
+                        <p><strong>Grant that I may receive whatever passage You choose with faith, humility, and an
+                                open heart, knowing that Your Word never returns empty but accomplishes Your purpose.
+                                Through Christ our Lord. Amen.</strong></p>
+
+                        <div class="prayer-verse">
+                            <em>“The lot is cast into the lap, but its every decision is from the Lord.” - Proverbs
+                                16:33</em>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="malayalam-prayer" style="display: none;">
+                    <h2 class="prayer-title">വിശുദ്ധഗ്രന്ഥം വായിക്കും മുമ്പുള്ള പ്രാര്‍ത്ഥന</h2>
+                    <div class="prayer-text">
+                        <p><strong>✠ പിതാവിനും പുത്രനും പരിശുദ്ധാത്മാവിനും സ്തുതി. ആദിമുതല്‍ എന്നേക്കും,
+                                ആമ്മേന്‍.</strong></p>
+
+                        <p><strong>സര്‍വശക്തനായ ദൈവമേ, അങ്ങയുടെ വചനം ശ്രവിക്കുന്നതിനും അത് ഗ്രഹിക്കുന്നതിനും എന്‍റെ
+                                ഹൃദയത്തെയും മനസ്സിനെയും ഒരുക്കണമേ. പരിശുദ്ധാത്മാവിനാല്‍ നിവേശിതരായ വിശുദ്ധ
+                                ഗ്രന്ഥകാരന്മാരിലൂടെ അങ്ങ് വെളിപ്പെടുത്തിയ സത്യങ്ങള്‍ മനസ്സിലാക്കുവാനുള്ള ജ്ഞാനം എനിക്ക്
+                                നല്‍കണമേ.</strong></p>
+
+                        <p><strong>ഈ നിമിഷം എന്‍റെ ആത്മാവിന് ഏറ്റവും ആവശ്യമായ വചനഭാഗത്തേക്ക് അങ്ങയുടെ ദൈവികപരിപാലനയാല്‍
+                                എന്നെ നയിക്കേണമേ. യാദൃശ്ചികതയിലല്ല, അങ്ങയുടെ ഹിതത്തിലാണ് ഞാന്‍ പൂര്‍ണ്ണമായി
+                                ശരണപ്പെടുന്നത്.</strong></p>
+
+                        <p><strong>അങ്ങ് എനിക്കായി തിരഞ്ഞെടുക്കുന്ന വചനം എന്‍റെ പാദങ്ങള്‍ക്ക് വിളക്കും പാതയില്‍
+                                പ്രകാശവുമായിരിക്കട്ടെ. വിശ്വാസത്തോടും വിനയത്തോടും തുറന്ന ഹൃദയത്തോടും കൂടെ അത്
+                                സ്വീകരിക്കുവാനും, എന്‍റെ ജീവിതത്തില്‍ ഫലമണിയുവാനും എന്നെ അനുഗ്രഹിക്കേണമേ. ഞങ്ങളുടെ
+                                കര്‍ത്താവായ ഈശോമിശിഹാവഴി ഞങ്ങളീ പ്രാര്‍ത്ഥന സമര്‍പ്പിക്കുന്നു. ആമ്മേന്‍.</strong></p>
+
+                        <div class="prayer-verse">
+                            <em>"കാര്യങ്ങള്‍ തീരുമാനിക്കാന്‍കുറിയിടുന്നവരുണ്ട്‌; അന്തിമായ തീരുമാനം
+                                കര്‍ത്താവിന്‍േറതാണ്‌." - സുഭാഷിതങ്ങള്‍ 16:33</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selection-section">
+                <h2 class="selection-title">Choose Your Sacred Scripture Journey</h2>
+                <p class="selection-subtitle">Select the spiritual focus that speaks to your heart today</p>
+
+                <div class="testament-options">
+                    <div class="option-card">
+                        <input type="radio" id="complete" name="testament" value="complete" checked>
+                        <label for="complete" class="option-label">
+                            <i class="fas fa-book option-icon"></i>
+                            <div class="option-title">Complete Catholic Bible</div>
+                            <div class="option-desc">All 73 books of Sacred Scripture</div>
+                            <div class="option-stats">46 OT + 27 NT books</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="oldTestament" name="testament" value="oldTestament">
+                        <label for="oldTestament" class="option-label">
+                            <i class="fas fa-scroll option-icon"></i>
+                            <div class="option-title">Old Testament</div>
+                            <div class="option-desc">Foundation of faith & prophecy</div>
+                            <div class="option-stats">46 books including Deuterocanonical</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="newTestament" name="testament" value="newTestament">
+                        <label for="newTestament" class="option-label">
+                            <i class="fas fa-cross option-icon"></i>
+                            <div class="option-title">New Testament</div>
+                            <div class="option-desc">Life & teachings of Christ</div>
+                            <div class="option-stats">27 books of the New Covenant</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="gospels" name="testament" value="gospels">
+                        <label for="gospels" class="option-label">
+                            <i class="fas fa-heart option-icon"></i>
+                            <div class="option-title">The Four Gospels</div>
+                            <div class="option-desc">Life of Jesus Christ</div>
+                            <div class="option-stats">Matthew, Mark, Luke, John</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="psalms" name="testament" value="psalms">
+                        <label for="psalms" class="option-label">
+                            <i class="fas fa-music option-icon"></i>
+                            <div class="option-title">Book of Psalms</div>
+                            <div class="option-desc">Songs of prayer & praise</div>
+                            <div class="option-stats">150 chapters of divine poetry</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="wisdom" name="testament" value="wisdom">
+                        <label for="wisdom" class="option-label">
+                            <i class="fas fa-lightbulb option-icon"></i>
+                            <div class="option-title">Wisdom Literature</div>
+                            <div class="option-desc">Practical spiritual guidance</div>
+                            <div class="option-stats">Job, Proverbs, Ecclesiastes, Wisdom, Sirach</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="pauline" name="testament" value="pauline">
+                        <label for="pauline" class="option-label">
+                            <i class="fas fa-envelope-open-text option-icon"></i>
+                            <div class="option-title">Letters of St. Paul</div>
+                            <div class="option-desc">Apostolic teachings & theology</div>
+                            <div class="option-stats">13 epistles + Hebrews</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="prophets" name="testament" value="prophets">
+                        <label for="prophets" class="option-label">
+                            <i class="fas fa-fire option-icon"></i>
+                            <div class="option-title">The Prophets</div>
+                            <div class="option-desc">God's messengers & revelations</div>
+                            <div class="option-stats">Major & Minor Prophets</div>
+                        </label>
+                    </div>
+
+                    <div class="option-card">
+                        <input type="radio" id="pentateuch" name="testament" value="pentateuch">
+                        <label for="pentateuch" class="option-label">
+                            <i class="fas fa-torah option-icon"></i>
+                            <div class="option-title">The Pentateuch</div>
+                            <div class="option-desc">Foundation of salvation history</div>
+                            <div class="option-stats">Genesis through Deuteronomy</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="selection-info">
+                    <div class="info-card" id="selectionInfo">
+                        <h3>Complete Catholic Bible Selected</h3>
+                        <p>Your spiritual journey will include passages from the entire Catholic Canon - both Old and
+                            New Testaments, encompassing the full breadth of God's revelation through salvation history.
+                        </p>
+                        <div class="included-books" id="includedBooks">
+                            <strong>Includes:</strong> All 73 books from Genesis to Revelation
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generate-section">
+                    <button id="generateBtn" class="generate-btn">
+                        <i class="fas fa-dove"></i>
+                        Receive Sacred Scripture
+                    </button>
+                </div>
+            </div>
+
+            <div id="result" class="result-section">
+                <div id="chapterTitle" class="result-title"></div>
+                <div id="chapterLink" class="result-link"></div>
+            </div>
+
+            <div class="about-section">
+                <h2 class="about-title">About This Companion</h2>
+                <div class="about-text">
+                    <p>This Sacred Scripture Companion is available in both English and Malayalam (മലയാളം), allowing
+                        Catholics from different linguistic backgrounds to pray and read in their preferred language.
+                        The names of the Biblical books are based on the official POC Catholic Bible translation.
+                        The tool offers nine distinct spiritual journeys, from the complete Catholic Bible to focused
+                        selections like the Gospels, Psalms, Wisdom Literature, and more. When a chapter is selected,
+                        both English and Malayalam book names are displayed to serve bilingual communities.</p>
+
+                    <p>Choose from various sacred collections: the complete 73-book Catholic Bible, the Old Testament's
+                        salvation history, the New Testament's Gospel message, the four Gospels about Christ's life, the
+                        150 Psalms for prayer and praise, Wisdom Literature for practical guidance, St. Paul's
+                        theological letters, the Prophets' divine messages, or the Pentateuch's foundational books. Each
+                        selection offers a unique spiritual focus guided by the Holy Spirit.</p>
+
+                    <p>The prayer featured is the traditional Catholic invocation to the Holy Spirit that has been used
+                        for centuries before reading Sacred Scripture, available in both languages using authentic
+                        Catholic prayer formulations. Each selection is made through what we trust to be Divine
+                        Providence, allowing the Holy Spirit to guide you to the Scripture passage most needed for your
+                        spiritual journey at this moment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-symbol">✠</div>
+            <p class="footer-text">Ad Majorem Dei Gloriam</p>
+        </div>
+    </div>
+
+    <script>
+        // Catholic Bible books with their chapter counts - verified accurate
+        const catholicBible = {
+            // Old Testament (46 books)
+            "Genesis": 50, "Exodus": 40, "Leviticus": 27, "Numbers": 36, "Deuteronomy": 34,
+            "Joshua": 24, "Judges": 21, "Ruth": 4, "1 Samuel": 31, "2 Samuel": 24, "1 Kings": 22,
+            "2 Kings": 25, "1 Chronicles": 29, "2 Chronicles": 36, "Ezra": 10, "Nehemiah": 13,
+            "Tobit": 14, "Judith": 16, "Esther": 10, "1 Maccabees": 16, "2 Maccabees": 15, "Job": 42,
+            "Psalms": 150, "Proverbs": 31, "Ecclesiastes": 12, "Song of Solomon": 8, "Wisdom": 19,
+            "Sirach": 51, "Isaiah": 66, "Jeremiah": 52, "Lamentations": 5, "Baruch": 6, "Ezekiel": 48,
+            "Daniel": 14, "Hosea": 14, "Joel": 3, "Amos": 9, "Obadiah": 1, "Jonah": 4, "Micah": 7,
+            "Nahum": 3, "Habakkuk": 3, "Zephaniah": 3, "Haggai": 2, "Zechariah": 14, "Malachi": 3,
+
+            // New Testament (27 books)
+            "Matthew": 28, "Mark": 16, "Luke": 24, "John": 21, "Acts": 28, "Romans": 16,
+            "1 Corinthians": 16, "2 Corinthians": 13, "Galatians": 6, "Ephesians": 6, "Philippians": 4,
+            "Colossians": 4, "1 Thessalonians": 5, "2 Thessalonians": 3, "1 Timothy": 6, "2 Timothy": 4,
+            "Titus": 3, "Philemon": 1, "Hebrews": 13, "James": 5, "1 Peter": 5, "2 Peter": 3,
+            "1 John": 5, "2 John": 1, "3 John": 1, "Jude": 1, "Revelation": 22
+        };
+
+        // Malayalam names for Bible books based on the POC Catholic Bible
+        const malayalamNames = {
+            // Old Testament
+            "Genesis": "ഉല്‍പത്തി",
+            "Exodus": "പുറപ്പാട്",
+            "Leviticus": "ലേവ്യര്‍",
+            "Numbers": "സംഖ്യ",
+            "Deuteronomy": "നിയമാവര്‍ത്തനം",
+            "Joshua": "ജോഷ്വ",
+            "Judges": "ന്യായാധിപന്മാര്‍",
+            "Ruth": "റൂത്ത്",
+            "1 Samuel": "1 സാമുവല്‍",
+            "2 Samuel": "2 സാമുവല്‍",
+            "1 Kings": "1 രാജാക്കന്മാര്‍",
+            "2 Kings": "2 രാജാക്കന്മാര്‍",
+            "1 Chronicles": "1 ദിനവൃത്താന്തം",
+            "2 Chronicles": "2 ദിനവൃത്താന്തം",
+            "Ezra": "എസ്രാ",
+            "Nehemiah": "നെഹെമിയ",
+            "Tobit": "തോബിത്",
+            "Judith": "യൂദിത്",
+            "Esther": "എസ്തേര്‍",
+            "1 Maccabees": "1 മക്കബായര്‍",
+            "2 Maccabees": "2 മക്കബായര്‍",
+            "Job": "ജോബ്",
+            "Psalms": "സങ്കീര്‍ത്തനങ്ങള്‍",
+            "Proverbs": "സുഭാഷിതങ്ങള്‍",
+            "Ecclesiastes": "സഭാപ്രസംഗകന്‍",
+            "Song of Solomon": "ഉത്തമഗീതം",
+            "Wisdom": "ജ്ഞാനം",
+            "Sirach": "പ്രഭാഷകന്‍",
+            "Isaiah": "ഏശയ്യാ",
+            "Jeremiah": "യിരെമ്യാ",
+            "Lamentations": "വിലാപങ്ങള്‍",
+            "Baruch": "ബാറുക്ക്",
+            "Ezekiel": "എസെക്കിയേല്‍",
+            "Daniel": "ദാനിയേല്‍",
+            "Hosea": "ഹോസിയ",
+            "Joel": "ജോയേല്‍",
+            "Amos": "ആമോസ്",
+            "Obadiah": "ഓബദിയ",
+            "Jonah": "യോനാ",
+            "Micah": "മിക്കാ",
+            "Nahum": "നഹൂം",
+            "Habakkuk": "ഹബക്കുക്ക്",
+            "Zephaniah": "സെഫാനിയ",
+            "Haggai": "ഹഗ്ഗായി",
+            "Zechariah": "സഖറിയാ",
+            "Malachi": "മലാക്കി",
+
+            // New Testament
+            "Matthew": "മത്തായി",
+            "Mark": "മര്‍ക്കോസ്",
+            "Luke": "ലൂക്കാ",
+            "John": "യോഹന്നാന്‍",
+            "Acts": "അപ്പസ്തോലന്മാരുടെ നടപടികള്‍",
+            "Romans": "റോമാ",
+            "1 Corinthians": "1 കോറിന്തോസ്",
+            "2 Corinthians": "2 കോറിന്തോസ്",
+            "Galatians": "ഗലാത്തിയാ",
+            "Ephesians": "എഫേസോസ്",
+            "Philippians": "ഫിലിപ്പി",
+            "Colossians": "കൊളോസോസ്",
+            "1 Thessalonians": "1 തെസലോനിക്കാ",
+            "2 Thessalonians": "2 തെസലോനിക്കാ",
+            "1 Timothy": "1 തിമോത്തേയോസ്",
+            "2 Timothy": "2 തിമോത്തേയോസ്",
+            "Titus": "തീത്തോസ്",
+            "Philemon": "ഫിലെമോന്‍",
+            "Hebrews": "ഹെബ്രായര്‍",
+            "James": "യാക്കോബ്",
+            "1 Peter": "1 പത്രോസ്",
+            "2 Peter": "2 പത്രോസ്",
+            "1 John": "1 യോഹന്നാന്‍",
+            "2 John": "2 യോഹന്നാന്‍",
+            "3 John": "3 യോഹന്നാന്‍",
+            "Jude": "യൂദാ",
+            "Revelation": "വെളിപാട്"
+        };
+
+
+        // Define Old Testament and New Testament books
+        const oldTestamentBooks = [
+            "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+            "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
+            "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles",
+            "Ezra", "Nehemiah", "Tobit", "Judith", "Esther",
+            "1 Maccabees", "2 Maccabees", "Job", "Psalms", "Proverbs",
+            "Ecclesiastes", "Song of Solomon", "Wisdom", "Sirach",
+            "Isaiah", "Jeremiah", "Lamentations", "Baruch", "Ezekiel",
+            "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah",
+            "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai",
+            "Zechariah", "Malachi"
+        ];
+
+        const newTestamentBooks = [
+            "Matthew", "Mark", "Luke", "John", "Acts",
+            "Romans", "1 Corinthians", "2 Corinthians", "Galatians",
+            "Ephesians", "Philippians", "Colossians", "1 Thessalonians",
+            "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon",
+            "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John",
+            "3 John", "Jude", "Revelation"
+        ];
+
+        // Define book categories
+        const gospelsBooks = ["Matthew", "Mark", "Luke", "John"];
+        const psalmsBooks = ["Psalms"];
+        const wisdomBooks = ["Job", "Proverbs", "Ecclesiastes", "Song of Solomon", "Wisdom", "Sirach"];
+        const paulineBooks = [
+            "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+            "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+            "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews"
+        ];
+        const prophetsBooks = [
+            "Isaiah", "Jeremiah", "Lamentations", "Baruch", "Ezekiel", "Daniel",
+            "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+            "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi"
+        ];
+        const pentateuchBooks = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"];
+
+        function getSelectedBooks() {
+            const selectedTestament = document.querySelector('input[name="testament"]:checked').value;
+
+            switch (selectedTestament) {
+                case 'oldTestament':
+                    return oldTestamentBooks;
+                case 'newTestament':
+                    return newTestamentBooks;
+                case 'gospels':
+                    return gospelsBooks;
+                case 'psalms':
+                    return psalmsBooks;
+                case 'wisdom':
+                    return wisdomBooks;
+                case 'pauline':
+                    return paulineBooks;
+                case 'prophets':
+                    return prophetsBooks;
+                case 'pentateuch':
+                    return pentateuchBooks;
+                case 'complete':
+                default:
+                    return Object.keys(catholicBible);
+            }
+        }
+
+        function updateSelectionInfo() {
+            const selectedTestament = document.querySelector('input[name="testament"]:checked').value;
+            const infoCard = document.getElementById('selectionInfo');
+            const includedBooks = document.getElementById('includedBooks');
+
+            const selectionData = {
+                complete: {
+                    title: "Complete Catholic Bible Selected",
+                    description: "Your spiritual journey will include passages from the entire Catholic Canon - both Old and New Testaments, encompassing the full breadth of God's revelation through salvation history.",
+                    books: "All 73 books from Genesis to Revelation"
+                },
+                oldTestament: {
+                    title: "Old Testament Selected",
+                    description: "Journey through the foundation of our faith - from creation through the prophecies of the Messiah. Includes the deuterocanonical books that provide additional spiritual wisdom.",
+                    books: "46 books including Genesis, Psalms, Isaiah, Wisdom, Sirach, Maccabees, and more"
+                },
+                newTestament: {
+                    title: "New Testament Selected",
+                    description: "Focus on the life, teachings, death, and resurrection of Jesus Christ, plus the early Church's formation and apostolic teachings.",
+                    books: "27 books from Matthew through Revelation"
+                },
+                gospels: {
+                    title: "The Four Gospels Selected",
+                    description: "Immerse yourself in the life and teachings of Jesus Christ through the eyes of the four evangelists. Each Gospel offers a unique perspective on Our Lord's ministry.",
+                    books: "Matthew, Mark, Luke, and John (89 chapters total)"
+                },
+                psalms: {
+                    title: "Book of Psalms Selected",
+                    description: "Enter into prayer and praise with the sacred songs of David and other psalmists. The Psalms speak to every human emotion and spiritual experience.",
+                    books: "150 chapters of divine poetry and prayer"
+                },
+                wisdom: {
+                    title: "Wisdom Literature Selected",
+                    description: "Discover practical spiritual guidance and deep insights into living a life pleasing to God. These books offer timeless wisdom for daily living.",
+                    books: "Job, Proverbs, Ecclesiastes, Song of Solomon, Wisdom, Sirach"
+                },
+                pauline: {
+                    title: "Letters of St. Paul Selected",
+                    description: "Explore the profound theological teachings of the Apostle to the Gentiles. Paul's letters form the foundation of Christian theology and pastoral care.",
+                    books: "Romans through Philemon, plus Hebrews (14 epistles total)"
+                },
+                prophets: {
+                    title: "The Prophets Selected",
+                    description: "Listen to God's messengers throughout salvation history - their calls to repentance, promises of hope, and prophecies of the coming Messiah.",
+                    books: "Major and Minor Prophets from Isaiah to Malachi"
+                },
+                pentateuch: {
+                    title: "The Pentateuch Selected",
+                    description: "Begin with the foundation of salvation history - creation, the patriarchs, the Exodus, and the giving of the Law. These books establish God's covenant with His people.",
+                    books: "Genesis, Exodus, Leviticus, Numbers, Deuteronomy"
+                }
+            };
+
+            const data = selectionData[selectedTestament];
+            infoCard.querySelector('h3').textContent = data.title;
+            infoCard.querySelector('p').textContent = data.description;
+            includedBooks.innerHTML = `<strong>Includes:</strong> ${data.books}`;
+        }
+
+        function generateRandomChapter() {
+            // Get books based on selection
+            const availableBooks = getSelectedBooks();
+
+            // Select a random book from available books
+            const randomBook = availableBooks[Math.floor(Math.random() * availableBooks.length)];
+
+            // Get the number of chapters in that book
+            const chapterCount = catholicBible[randomBook];
+
+            // Select a random chapter
+            const randomChapter = Math.floor(Math.random() * chapterCount) + 1;
+
+            // Get Malayalam name
+            const malayalamName = malayalamNames[randomBook];
+
+            // Display the result with both English and Malayalam
+            const titleElement = document.getElementById('chapterTitle');
+            const malayalamChapterNumber = String(randomChapter).split('').map(digit => {
+                const malayalamDigits = ['൦', '൧', '൨', '൩', '൪', '൫', '൬', '൭', '൮', '൯'];
+                return malayalamDigits[parseInt(digit, 10)];
+            }).join('');
+            titleElement.innerHTML = `
+                <div style="margin-bottom: 10px;">
+                    <div style="font-size: 1.8rem; color: var(--primary); font-weight: 900;">${randomBook} Chapter ${randomChapter}</div>
+                    <div style="font-size: 1.4rem; color: var(--text-secondary); font-weight: 600; margin-top: 8px;">${malayalamName} അധ്യായം ${malayalamChapterNumber}</div>
+                </div>
+            `;
+
+            // Create link to BibleGateway (RSVCE - Revised Standard Version Catholic Edition)
+            const linkElement = document.getElementById('chapterLink');
+            linkElement.innerHTML = `
+                <a href="https://www.biblegateway.com/passage/?search=${encodeURIComponent(randomBook)}+${randomChapter}&version=RSVCE" target="_blank" class="read-btn">
+                    <i class="fas fa-book-open"></i> Read Chapter (RSVCE)
+                </a>
+            `;
+
+            // Show the result section with animation
+            const resultElement = document.getElementById('result');
+            resultElement.style.display = 'block';
+
+            // Scroll to the result smoothly
+            setTimeout(() => {
+                resultElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Event listener for the generate button
+        document.getElementById('generateBtn').addEventListener('click', generateRandomChapter);
+
+        // Add click effects for option cards and update info
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const radio = this.querySelector('input[type="radio"]');
+                radio.checked = true;
+                updateSelectionInfo();
+            });
+        });
+
+        // Add change listeners for radio buttons
+        document.querySelectorAll('input[name="testament"]').forEach(radio => {
+            radio.addEventListener('change', updateSelectionInfo);
+        });
+
+        // Initialize selection info
+        updateSelectionInfo();
+
+        // Language switching function
+        function showLanguage(language) {
+            const englishPrayer = document.getElementById('english-prayer');
+            const malayalamPrayer = document.getElementById('malayalam-prayer');
+            const englishBtn = document.getElementById('englishBtn');
+            const malayalamBtn = document.getElementById('malayalamBtn');
+
+            if (language === 'english') {
+                englishPrayer.style.display = 'block';
+                malayalamPrayer.style.display = 'none';
+                englishBtn.classList.add('active');
+                malayalamBtn.classList.remove('active');
+            } else {
+                englishPrayer.style.display = 'none';
+                malayalamPrayer.style.display = 'block';
+                englishBtn.classList.remove('active');
+                malayalamBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
